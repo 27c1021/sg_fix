@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>ジャングルバルーンシューティング</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <!-- ArUcoマーカー検出ライブラリ -->
+    <script
+        src="https://rawcdn.githack.com/damianofalcioni/js-aruco2/master/src/cv.js"
+    ></script>
+
+    <script
+        src="https://rawcdn.githack.com/damianofalcioni/js-aruco2/master/src/aruco.js"
+    ></script>
+</head>
+
+<body>
+
+    <main id="game">
+
+        <!--
+            カメラ映像は画面には表示しません。
+            ArUcoマーカーを読み取るためだけに使います。
+        -->
+        <video
+            id="camera"
+            autoplay
+            playsinline
+            muted
+        ></video>
+
+        <!-- ArUco検出専用Canvas -->
+        <canvas id="detectCanvas"></canvas>
+
+        <!-- タイトル -->
+        <div id="title">
+            ジャングルバルーンシューティング
+        </div>
+
+        <!-- 時間とスコア -->
+        <div id="info">
+
+            <div>
+                のこり
+                <span id="time">20</span>
+                びょう
+            </div>
+
+            <div>
+                スコア
+                <span id="score">0</span>
+            </div>
+
+        </div>
+
+        <!-- 遊び方 -->
+        <div id="instruction">
+            風船をねらって発射しよう！
+        </div>
+
+        <!-- 風船を入れる場所 -->
+        <div id="balloonArea"></div>
+
+        <!-- 照準 -->
+        <div id="scope"></div>
+
+        <!-- 発射時の光 -->
+        <div id="shotFlash"></div>
+
+        <!-- カウントダウン -->
+        <div id="countdown"></div>
+
+        <!-- 接続状況 -->
+        <div id="connectionStatus">
+
+            <div>
+                カメラ：
+                <span id="cameraStatus">待機中</span>
+            </div>
+
+            <div>
+                マーカー：
+                <span id="markerStatus">未検出</span>
+            </div>
+
+            <div>
+                コントローラー：
+                <span id="firebaseStatus">接続中</span>
+            </div>
+
+        </div>
+
+        <!-- 終了時の暗い背景 -->
+        <div id="resultOverlay"></div>
+
+        <!-- 終了メッセージ -->
+        <div id="message"></div>
+
+        <!-- スタートボタン -->
+        <button id="startButton">
+            ゲームスタート
+        </button>
+
+    </main>
+
+    <!--
+        ?v=10はキャッシュ対策です。
+        GitHub Pagesが古いJavaScriptを表示しにくくなります。
+    -->
+    <script
+        type="module"
+        src="script.js?v=10"
+    ></script>
+
+</body>
+
+</html>
